@@ -1,0 +1,9 @@
+.root {
+    -fx-background-image: url("funcBG.jpg");
+}
+
+.label {
+    -fx-text-fill: black;
+    -fx-font-size: 11pt;
+}
+

@@ -1,0 +1,92 @@
+@font-face{font-family: titleFont; src: url("../../static/pic/kaushan.otf")}
+
+.home-wel {
+	/*background:rgba(0,0,0,0.2)!important;background:#000;filter:Alpha(opacity=20);*/
+	height: 400px;
+	width: 530px;
+	/*background-color: teal;*/
+	margin: auto;
+  	position: absolute;
+  	top: 0; left: 0; bottom: 0; right: 0;
+}
+
+body .jumbotron {
+	opacity: 0.65;
+	filter: alpha(opacity=65);
+	border-radius: 20px;
+}
+
+#lower {
+	height: 100%;
+	width: 100%;
+}
+
+#title {
+	font-family: titleFont;
+	font-weight: 900;
+	font-size: 80px;	
+	color: #28384B;
+	margin-top: 50px;
+	margin-bottom: 35px;	
+}
+
+.home-wel button {
+	/*opacity: 1;
+	filter: alpha(opacity=100);*/
+	margin-top: 15px;
+	margin-left: 24.5%;
+	height: 50px;
+	width: 280px;
+}
+
+#login {
+	margin-top: 35px;
+	width: 280px;
+	/*vertical-align: middle;*/
+}
+
+#visitor {
+	width: 280px;
+	/*vertical-align: middle;*/
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.2); /* Black w/ opacity */ 
+}
+
+#motitle {
+	font-size: 25px;	
+}
+
+/* Modal Content/Box */
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
+}
+
+.close {
+    color: #aaa;
+    /*float: right;*/
+    margin-left: 900px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}

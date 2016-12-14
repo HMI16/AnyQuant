@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>login</title>
+    <script type="text/javascript">
+       // alert("abc");
+        window.onload = function(){
+            var request = new XMLHttpRequest();
+            var method = "GET";
+            var url = "/StockList";
+
+            //var age =$("#id").attr("value");
+            request.open(method, url);
+            request.send(null);
+            request.onreadystatechange = function () {
+                if (request.readyState == 4) {
+                    if(request.status == 200 || request.status == 304){
+                    var obj =eval("("+ request.responseText+")");
+                    alert(request.responseText);
+                      //  alert(obj);
+                    alert(obj[0].id);
+                    //alert(age);
+
+                    var json = {"name":"Tom"};
+                   // alert(json.name);
+                    }
+                }
+            }
+            }
+
+    </script>
+
+</head>
+<body>
+    <h1 align="center">用户登录</h1>
+    <form method="get" action="/prarm">
+        <center>
+            <p>用户名: <input type="text" name = "name"></p>
+            <p>密&nbsp码: <input type="password" name = "password"></p>
+            <p>
+                <input type = "submit" value="提交">
+                <input type = "reset" value="取消">
+            </p>
+
+        </center>
+    </form>
+</body>
+</html>

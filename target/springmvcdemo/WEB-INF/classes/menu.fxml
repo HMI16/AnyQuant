@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0"
+      prefWidth="1200.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="ui.menuPane.MenuController">
+    <children>
+        <ImageView fitHeight="100.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@icon.png"/>
+            </image>
+        </ImageView>
+        <Label fx:id="market" alignment="CENTER" layoutX="200.0" onMouseClicked="#changeToMarketPane" prefHeight="100.0"
+               prefWidth="180.0"/>
+        <Label fx:id="stock" alignment="CENTER" layoutX="380.0" onMouseClicked="#changeToStockPane" prefHeight="100.0"
+               prefWidth="180.0"/>
+        <ImageView fitHeight="100.0" fitWidth="640.0" layoutX="560.0" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@searchPartBG.jpg"/>
+            </image>
+        </ImageView>
+        <Label fx:id="search" layoutX="580.0" layoutY="35.0" onMouseClicked="#search" prefHeight="30.0"
+               prefWidth="30.0"/>
+        <Label fx:id="refresh" layoutX="925.0" layoutY="30.0" prefHeight="40.0" prefWidth="40.0"/>
+        <Label fx:id="collection" layoutX="990.0" layoutY="30.0" prefHeight="40.0" prefWidth="40.0"/>
+        <Label fx:id="settings" layoutX="1055.0" layoutY="30.0" prefHeight="40.0" prefWidth="40.0"/>
+        <Label fx:id="exit" layoutX="1120.0" layoutY="30.0" onMouseClicked="#exit" prefHeight="40.0" prefWidth="40.0"/>
+        <TextField fx:id="input" layoutX="620.0" layoutY="35.0" prefHeight="30.0" prefWidth="270.0"
+                   promptText="输入8位股票ID，如sz000001"/>
+    </children>
+</Pane>

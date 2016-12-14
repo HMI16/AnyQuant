@@ -1,0 +1,7 @@
+.table-row-cell:selected {
+    -fx-background-color: #00d8ff;
+}
+
+.column-header {
+    -fx-background-color: #DFEBED;
+}

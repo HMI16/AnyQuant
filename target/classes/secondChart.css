@@ -1,0 +1,45 @@
+.chart-series-line {
+    -fx-stroke-width: 4px;
+    -fx-effect: null;
+}
+
+.chart-plot-background {
+    -fx-background-color: transparent;
+}
+
+.default-color0.chart-series-line {
+    -fx-stroke: #A01D39;
+}
+
+.default-color1.chart-series-line {
+    -fx-stroke: #A4DF6E;
+}
+
+.default-color2.chart-series-line {
+    -fx-stroke: #E9776B;
+}
+
+.default-color0.chart-line-symbol {
+    -fx-background-color: #A01D39, white;
+}
+
+.default-color1.chart-line-symbol {
+    -fx-background-color: #A4DF6E, white;
+}
+
+.default-color2.chart-line-symbol {
+    -fx-background-color: #E9776B, white;
+}
+
+.axis {
+    -fx-tick-label-fill: black;
+}
+
+/*.y-axis{
+	 -fx-tick-label-fill: red ;  
+}*/
+
+#dateAxis {
+    visibility: hidden;
+    -fx-tick-label-fill: red;
+}

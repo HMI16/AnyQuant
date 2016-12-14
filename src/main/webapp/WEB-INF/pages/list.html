@@ -1,0 +1,260 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Stock List</title>
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="../static/css/flat-ui.min.css" rel="stylesheet">
+    <!--<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>-->
+    <!--<script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>-->
+    <link rel="stylesheet" type="text/css" href="../static/css/default.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/navbar.css">
+
+    <script src="../static/js/listTable.js"></script>
+    <script src="../static/js/fade.js"></script>
+    <script src="../static/js/openSingle.js"></script>
+
+  <!-- <link rel="shortcut icon" href="../../dist/img/favicon.ico"> -->
+
+</head>
+
+<body>
+    <nav class="navbar navbar-inverse navbar" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a href="../pages/home.html" class="navbar-brand">
+            <img src="../static/pic/icon.png" style="height: 50px;
+                margin-top: -15px; margin-left: 30px">
+          </a>
+        </div>
+          <ul class="nav navbar-nav" style="margin-left: 60px">
+            <li><a href="../pages/list.html" class="hvr-underline-from-center">股票列表</a></li>
+            <li><a href="../pages/benchmark.html?hs300" class="hvr-underline-from-center">大盘列表</a></li>
+            <li><a href="../pages/industry.html" class="hvr-underline-from-center">热门行业</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" data-toggle="modal" data-target="#help-form1">帮助</a></li>
+            <li><a href="#" onclick="location.reload(true)">刷新</a></li>
+          </ul>
+        </div>
+    </nav>
+    
+    <div class="main">
+
+      <div class="table-container"> <!-- style="overflow: auto; width: 895px;" -->
+        <div class="jumbotron" style="height: 620px">
+         <!--  style="position: relative; width: 895px; height: 620px; overflow-x: hidden" -->
+        </div>
+      </div> <!-- /<tablecontainer -->
+
+      <div class="table-container-upper" style="overflow-x: hidden; overflow-y: auto;">
+        <table class="table" id="activeTable" style="table-layout:fixed; padding: 100px">
+          <thead style="font-size: 15px">
+            <tr>
+              <th width="50">股票ID</th>
+              <th width="80">名称</th>
+              <th width="65">开盘价</th>
+              <th width="65">最高价</th>
+              <th width="65">最低价</th>
+              <th width="65">收盘价</th>
+              <th width="75">后复权价</th>
+              <th width="65">成交量</th>
+              <th width="65">转手率</th>
+              <th width="65">市盈率</th>
+              <th width="65">市净率</th>
+              <!--<th width="90">更新时间</th>-->
+            </tr>
+          </thead>
+          <!-- </table> -->
+          <tbody style="font-size: 15px" id="table-body">
+
+          </tbody>
+        </table>
+      </div>
+
+      <div class="right-panel">
+        <div class="stats">
+           <div class="jumbotron" style="height: 250px">
+             <h7 style="margin-top: -40px">常用统计指标</h7>
+               <p style="font-size: 15px" id="id">股票id：</p>
+               <p style="font-size: 15px" id="flu">历史波动率：</p>
+               <p style="font-size: 15px" id="increase">涨跌幅：</p>
+           </div>
+         </div>
+
+         <div class="filter">
+           <div class="jumbotron" style="height: 250px">
+             
+           </div>
+         </div>
+
+         <div class="filter-upper">
+             <div class="filter-form">
+                <div class="row">
+                  <div class="filter-table">
+                    <form class="form-inline" id="filt-form" role="form" action="/StockFilt">
+                      <table>
+                        <tr>
+                          <td class="filter-label" align="right">
+                            <label class="filter-label"> 后复权价 </label>
+                          </td>
+                          <td align="left">
+                            <div class="filter-box">
+                              <input type="text" class="form-control" id="Ladj-input" name="Ladj_price" placeholder="low">
+                              <!-- <label class="filter-label"> ~ </label> -->
+                              <input type="text" class="form-control" id="Hadj-input" name="Hadj_price" placeholder="high">
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="filter-label" align="right">
+                            <label> 成交量 </label>
+                          </td>
+                          <td align="left">
+                            <div class="filter-box">
+                              <input type="text" class="form-control" id="Hvol-input" name="Lvolume" placeholder="low">
+                              <!-- <label class="filter-label"> ~ </label> -->
+                              <input type="text" class="form-control" id="Lvol-input" name="Hvolume" placeholder="high">
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="filter-label" align="right">
+                            <label class="filter-label"> 换手率 </label>
+                          </td>
+                          <td align="left">
+                            <div class="filter-box">
+                              <input type="text" class="form-control" id="Hturn-input" name="Lturnover" placeholder="low">
+                              <!-- <label class="filter-label"> ~ </label> -->
+                              <input type="text" class="form-control" id="Lturn-input" name="Hturnover" placeholder="high">
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="filter-label" align="right">
+                            <label class="filter-label"> 市盈率 </label>
+                          </td>
+                          <td align="left">
+                            <div class="filter-box">
+                              <input type="text" class="form-control" id="Hpe-input" name="Lpe" placeholder="low">
+                              <!-- <label class="filter-label"> ~ </label> -->
+                              <input type="text" class="form-control" id="Lpe-input" name="Hpe" placeholder="high">
+                            </div>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td class="filter-label" align="right">
+                            <label class="filter-label"> 市净率 </label>
+                          </td>
+                          <td align="left">
+                            <div class="filter-box">
+                              <input type="text" class="form-control" id="Hpd-input" name="Lpd" placeholder="low">
+                              <!-- <label class="filter-label"> ~ </label> -->
+                              <input type="text" class="form-control" id="Lpd-input" name="Hpd" placeholder="high">
+                            </div>
+                          </td>
+                        </tr>
+                      </table>
+                      <div>
+                        <button class="btn btn-primary" id="filter-btn" type="button" onclick="filt()">筛选!</button>
+                      </div>
+                    </form>
+                  </div><!-- /.col-md-12 -->
+                </div><!-- /.row -->
+             </div><!-- /.filter-form -->
+         </div>
+
+
+         <div class="search">
+           <div class="jumbotron" style="overflow: hidden; height: 28px; ">
+             <!-- <h7 style="margin-top: -25px">搜索ID</h7> -->
+             
+           </div>
+         </div>
+
+         <div class="search-upper">
+            <form class="form-horizontal" method="get" action="#" role="form" style="scroll: no; margin-left: 30px; margin-top: -45px; height: 30px; width: 120px">
+              <div class="form-group" style="height: 20px">
+                <label class="col-2 control-label" style="margin-left: -72px; margin-top: -5px; font-size: 18px"> Search </label>
+                <div class="col-lg-6">
+                  <div class="form-group">
+                    <div class="input-group" style=" margin-top: 35px">
+                      <input type="text" name="searchStockID"  id="searchStockID" placeholder="eg.sh600979" style="width: 145px;">
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" onclick="searchStock()">搜索</button>
+                      </span>
+                    </div><!-- /input-group -->
+                  </div><!-- /.form-group -->
+                </div><!-- /.col-lg-6 -->
+              </div>
+            </form>
+         </div>
+
+       </div> <!-- end of right-panel -->
+
+
+        <div class="modal fade" id="help-form1" tabindex="-1" role="dialog"
+             aria-labelledby="motitle" aria-hidden="true">
+            <div class="modal-dialog" id="wrapper">
+                <div class="modal-content" id="help-modal">
+                    <div class="modal-header">
+                        <button type="button" class="close"
+                                data-dismiss="modal" aria-hidden="true" style="width: 50px; height: 60px">
+                            &times;
+                        </button>
+                        <h4 id="motitle">
+                            帮助
+                        </h4>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <h7>Tips: </h7><br>
+                            1.单击股票 ID跳转该支股票详细信息页面<br>
+                            2.股票列表筛选，信息可不输入完全<br>
+                            3.热门行业列表中选择某行业，显示该行业所有股票列表<hr/>
+                            <h7>Info: </h7><br>
+                            1.AR--人气指标  通过比较一周内的开盘价在周期价格中的高低，反映市场买卖人气<br>
+                            2.BR--意愿指标  通过比较一段周期内的收盘价在该周期价格波动中的地位，反映市场买卖意愿程度<br>
+                            3.BIAS--乖离率  通过百分比的形式来表示股价与平均移动线之间的偏离程度，多用于日线上测量股价偏离均线大小程度<br>
+                            4.VR--容量比率  n日收阳日成交量总和与n日收阴日成交量之和的比值，以成交量的变化确认低价和高价，从而确定买卖时法<br>
+                            5.pR--威廉指标  基于摆动点来量度股市的超买卖现象，可以预测循环期内的高点或低点，从而提出有效率的投资讯号<br>
+                            6.MACD--指数平滑异同平均线  由快、慢均线的离散、聚合表征当前的多空状态和股价可能的发展变化趋势<br>
+                            7.Flu--历史波动率  基于过去的统计分析得出的，假定未来是过去的延伸，利用历史方法估计波动率类似于估计标的资产收益系列的标准差<br>
+                            8.KDJ--随机指标  研究最高价、最低价和收盘价之间的关系，用于股市的中短期趋势分析<br>
+                            9.OBV--能量潮  成交量数量化，制成趋势线，配合股价趋势线，从价格的变动及成交量的增减关系，推测市场气氛<br>
+                            10.RSI--相对强弱指标  通过比较一段时期内的平均收盘涨数和平均收盘跌数来分析市场买沽盘的意向和实力，从而作出未来市场的走势<br>
+                        </div>
+                    </div>
+                </div><!-- /.modal-content  login-modal-->
+            </div>
+        </div>
+
+    </div>  <!-- end of main -->
+<script type="text/javascript">
+   function searchStock(){
+       var stockID = document.getElementById('searchStockID').value;
+       if(stockID.length!=8&&(stockID.substring(0,2)!="sz"||stockID.substring(0,2)!="sh")){
+           alert("输入股票ID不正确！请重新输入");
+           document.getElementById('searchStockID').innerText("");
+           return;
+       }
+       window.location.href="pages/single.html?"+stockID;
+   }
+</script>
+
+
+
+
+<!--<script type="text/javascript" src="jquery.js"></script>-->
+<script type="text/javascript" src="../../dist/js/flat-ui.min.js"></script>
+<script type="text/javascript" src="../assets/js/application.js"></script>
+<script type="text/javascript" src="../static/js/bootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+<script type="text/javascript" src="../static/js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+
+    <script type="text/javascript">
+      window.onload = createTable();
+    </script>
+
+</body>
+</html>

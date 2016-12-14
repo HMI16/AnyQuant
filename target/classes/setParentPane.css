@@ -1,0 +1,18 @@
+.root {
+    -fx-background-color: #383838;
+}
+
+.label {
+    -fx-text-fill: black;
+    -fx-font-size: 11pt;
+}
+
+#v2box {
+    -fx-background-image: url("/picture/test.png");
+    -fx-background-size: 100, 70;
+    -fx-background-repeat: no-repeat;
+}
+
+.vbox {
+
+}

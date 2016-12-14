@@ -1,0 +1,387 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Benchmark</title>
+    <link rel="stylesheet" href="http://apps.bdimg.com/libs/bootstrap/3.3.0/css/bootstrap.min.css">
+    <link href="../static/css/flat-ui.min.css" rel="stylesheet">
+    <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+    <script src="http://libs.baidu.com/bootstrap/3.0.3/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../static/css/default.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/navbar.css">
+
+    <script src="../static/js/marketTable.js"></script>
+    <script src="../static/js/timeSelect.js"></script>
+    <script src="../static/js/fade.js"></script>
+    <script src="../ststic/js/benchFilt.js"></script>
+
+    <!-- <link rel="shortcut icon" href="../../dist/img/favicon.ico"> -->
+
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse navbar" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="../pages/home.html" class="navbar-brand">
+                <img src="../static/pic/icon.png" style="height: 50px;
+                margin-top: -15px; margin-left: 30px">
+            </a>
+        </div>
+        <ul class="nav navbar-nav" style="margin-left: 60px">
+            <li><a href="../pages/list.html" class="hvr-underline-from-center">股票列表</a></li>
+            <li><a href="../pages/benchmark.html?hs300" class="hvr-underline-from-center">大盘列表</a></li>
+            <li><a href="../pages/industry.html" class="hvr-underline-from-center">热门行业</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" data-toggle="modal" data-target="#help-form">帮助</a></li>
+            <li><a href="#">刷新</a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="main">
+    <div class="table-container"> <!-- style="overflow: auto; width: 895px;" -->
+        <div class="jumbotron" style="height: 620px">
+            <!--  style="position: relative; width: 895px; height: 620px; overflow-x: hidden" -->
+        </div>
+    </div> <!-- /<tablecontainer -->
+
+    <div class="table-container-upper">
+
+        <div class="tabbable" style="margin-left: 10px; margin-top:0px">
+            <ul class="nav nav-tabs">
+                <li class="active"><a href="#1" data-toggle="tab">大盘列表</a></li>
+                <!--<li><a href="#2" data-toggle="tab">Vol</a></li>-->
+                <li><a href="#3" data-toggle="tab">Pri</a></li>
+                <li><a href="#4" data-toggle="tab">ATR</a></li>
+                <li><a href="#5" data-toggle="tab">BIAS</a></li>
+                <li><a href="#6" data-toggle="tab">VR</a></li>
+                <li><a href="#7" data-toggle="tab">RSI</a></li>
+                <li><a href="#8" data-toggle="tab">MACD</a></li>
+            </ul>
+            <div class="tab-content">
+                <div class="tab-pane active" id="1">
+                    <div id="bench-list" style="position: relative; overflow-x: hidden;
+                        width: 910px; height: 630px; padding-right: 15px">
+                        <!-- style="position: relative; overflow: auto; width: 940px; height: 630px;" -->
+                        <table class="table" id="activeTable">
+                            <thead style="font-size: 15px">
+                            <tr>
+                                <th width="70">股票ID</th>
+                                <th width="80">名称</th>
+                                <th width="70">开盘价</th>
+                                <th width="70">最高价</th>
+                                <th width="70">最低价</th>
+                                <th width="70">收盘价</th>
+                                <th width="75">后复权价</th>
+                                <th width="65">成交量</th>
+                                <th width="85">日期</th>
+                            </tr>
+                            </thead>
+                            <!-- </table> -->
+                            <tbody style="font-size: 15px" id="table-body">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!--<div id="2" class="tab-pane">-->
+                    <!--<div id="vol" style="position: relative; overflow: auto; width: 910px; height: 630px;">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <div id="3" class="tab-pane">
+                    <div id="pri" style="position: relative; overflow: auto; width: 910px; height: 630px;">
+                    </div>
+                </div>
+                <div id="4" class="tab-pane">
+                    <div id="atr" style="position: relative; overflow: auto; width: 910px; height: 630px;">
+                    </div>
+                </div>
+                <div id="5" class="tab-pane">
+                    <div id="bias" style="position: relative; overflow: auto; width: 910px; height: 630px;">
+                    </div>
+                </div>
+                <div id="6" class="tab-pane">
+                    <div id="vr" style="position: relative; overflow: auto; width: 910px; height: 630px;">
+                    </div>
+                </div>
+                <div id="7" class="tab-pane">
+                    <div id="rsi" style="position: relative; overflow: auto; width: 910px; height: 630px;">
+                    </div>
+                </div>
+                <div id="8" class="tab-pane">
+                    <div id="macd" style="position: relative; overflow: auto; width: 910px; height: 630px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-panel">
+
+        <div class="stats">
+            <div class="jumbotron" style="height: 250px;">
+                <!-- <h7 style="margin-top: -40px">xxxx统计指标</h7> -->
+            </div>
+        </div>
+
+        <div class="stats-upper" style=""> <!-- background-color:red -->
+            <!-- <div class="jumbotron" style="height: 250px;"> -->
+            <!-- <label class="stats-tag">历史波动率</label><br>
+                 <label class="stats-tag">历史波动率</label><br>
+                 <label class="stats-tag">历史波动率</label><br> -->
+
+            <div class="stats-form" style="margin-left: -10px;">
+                <div class="row">
+                    <div class="stats-table" style="padding: 20px">
+                        <p>大盘分析</p>
+                        <p id="tip1"></p>
+                        <p id="tip2"></p>
+                        <!--<form class="form-inline" id="stats-form" role="form" action="">-->
+                            <!--<table>-->
+                                <!--<tr>-->
+                                    <!--<td class="stats-label" align="right">-->
+                                        <!--<label class="stats-label">-->
+                                            <!--历史波动率 </label>-->
+                                    <!--</td>-->
+                                    <!--<td align="left">-->
+                                        <!--<div class="stats-box">-->
+                                            <!--<input type="text" class="form-control" id="Ladj-input" name="Ladj_price"-->
+                                                   <!--placeholder="low">-->
+                                        <!--</div>-->
+                                    <!--</td>-->
+                                <!--</tr>-->
+                                <!--<tr>-->
+                                    <!--<td class="stats-label" align="right">-->
+                                        <!--<label> 成交量 </label>-->
+                                    <!--</td>-->
+                                    <!--<td align="left">-->
+                                        <!--<div class="stats-box">-->
+                                            <!--<input type="text" class="form-control" id="Hvol-input" name="Lvolume"-->
+                                                   <!--placeholder="low">-->
+                                        <!--</div>-->
+                                    <!--</td>-->
+                                <!--</tr>-->
+                                <!--<tr>-->
+                                    <!--<td class="stats-label" align="right">-->
+                                        <!--<label class="stats-label"> 换手率 </label>-->
+                                    <!--</td>-->
+                                    <!--<td align="left">-->
+                                        <!--<div class="stats-box">-->
+                                            <!--<input type="text" class="form-control" id="Hturn-input" name="Lturnover"-->
+                                                   <!--placeholder="low">-->
+                                        <!--</div>-->
+                                    <!--</td>-->
+                                <!--</tr>-->
+                                <!--<tr>-->
+                                    <!--<td class="stats-label" align="right">-->
+                                        <!--<label class="stats-label"> 市盈率 </label>-->
+                                    <!--</td>-->
+                                    <!--<td align="left">-->
+                                        <!--<div class="stats-box">-->
+                                            <!--<input type="text" class="form-control" id="Hpe-input" name="Lpe"-->
+                                                   <!--placeholder="low">-->
+                                        <!--</div>-->
+                                    <!--</td>-->
+                                <!--</tr>-->
+                                <!--<tr>-->
+                                    <!--<td class="stats-label" align="right">-->
+                                        <!--<label class="stats-label"> 市净率 </label>-->
+                                    <!--</td>-->
+                                    <!--<td align="left">-->
+                                        <!--<div class="stats-box">-->
+                                            <!--<input type="text" class="form-control" id="Hpd-input" name="Lpd"-->
+                                                   <!--placeholder="low">-->
+                                        <!--</div>-->
+                                    <!--</td>-->
+                                <!--</tr>-->
+                            <!--</table>-->
+                        <!--</form>-->
+                    </div><!-- /.col-md-12 -->
+                </div><!-- /.row -->
+            </div><!-- /.stats-form -->
+            <!-- </div> -->
+        </div>
+
+
+        <div class="time-selector">
+            <button type="button" class="btn btn-primary" style="width: 100%" data-toggle="collapse"
+                    data-target="#col-bench">
+                时间选择
+            </button>
+            <div id="col-bench" class="collapse">
+                <form id="filt-time-form">
+                    <div class="time-block">
+                        <!-- <label for="date-form" style="position: absolute; font-size: 16px; margin-left: 10px;">起始</label> -->
+                        <div class="input-group date form_date col-md-5" data-date=""
+                             data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            <input class="date-form" type="input" name="startTime" id="start"
+                                   style="height: 40px; margin-left: 1px; width:150px"
+                            >
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                    </div> <!-- start-selector -->
+                    <div class="time-block">
+                        <!-- <label for="date-form" style="position: absolute; font-size: 16px; margin-left: 10px;">结束</label> -->
+                        <div class="input-group date form_date col-md-5" data-date=""
+                             data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                            <input class="date-form" type="input" name="endTime" id="end"
+                                   style="height: 40px; margin-left: 1px; width:150px"
+                                   />
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                    </div> <!-- end-selector -->
+                    <button class="btn btn-info" id="time-btn" type="button">确认!</button>
+                </form>
+            </div>
+        </div>
+
+
+    </div>
+
+
+    <div class="modal fade" id="help-form" tabindex="-1" role="dialog"
+         aria-labelledby="motitle" aria-hidden="true">
+        <div class="modal-dialog" id="wrapper">
+            <div class="modal-content" id="help-modal">
+                <div class="modal-header">
+                    <button type="button" class="close"
+                            data-dismiss="modal" aria-hidden="true" style="width: 50px; height: 60px">
+                        &times;
+                    </button>
+                    <h4 id="motitle">
+                        帮助
+                    </h4>
+                </div>
+                <div class="modal-body">
+                    <div>
+                        <h7>Tips:</h7>
+                        <br>
+                        1.单击股票 ID跳转该支股票详细信息页面<br>
+                        2.股票列表筛选，信息可不输入完全<br>
+                        3.热门行业列表中选择某行业，显示该行业所有股票列表
+                        <hr/>
+                        <h7>Info:</h7>
+                        <br>
+                        1.AR--人气指标 通过比较一周内的开盘价在周期价格中的高低，反映市场买卖人气<br>
+                        2.BR--意愿指标 通过比较一段周期内的收盘价在该周期价格波动中的地位，反映市场买卖意愿程度<br>
+                        3.BIAS--乖离率 通过百分比的形式来表示股价与平均移动线之间的偏离程度，多用于日线上测量股价偏离均线大小程度<br>
+                        4.VR--容量比率 n日收阳日成交量总和与n日收阴日成交量之和的比值，以成交量的变化确认低价和高价，从而确定买卖时法<br>
+                        5.pR--威廉指标 基于摆动点来量度股市的超买卖现象，可以预测循环期内的高点或低点，从而提出有效率的投资讯号<br>
+                        6.MACD--指数平滑异同平均线 由快、慢均线的离散、聚合表征当前的多空状态和股价可能的发展变化趋势<br>
+                        7.Flu--历史波动率 基于过去的统计分析得出的，假定未来是过去的延伸，利用历史方法估计波动率类似于估计标的资产收益系列的标准差<br>
+                        8.KDJ--随机指标 研究最高价、最低价和收盘价之间的关系，用于股市的中短期趋势分析<br>
+                        9.OBV--能量潮 成交量数量化，制成趋势线，配合股价趋势线，从价格的变动及成交量的增减关系，推测市场气氛<br>
+                        10.RSI--相对强弱指标 通过比较一段时期内的平均收盘涨数和平均收盘跌数来分析市场买沽盘的意向和实力，从而作出未来市场的走势<br>
+                    </div>
+                </div>
+            </div><!-- /.modal-content  login-modal-->
+
+        </div>  <!-- end of main -->
+    </div>
+</div>
+
+        <script type="text/javascript" src="jquery.js"></script>
+        <script type="text/javascript" src="../../dist/js/flat-ui.min.js"></script>
+        <script type="text/javascript" src="../assets/js/application.js"></script>
+        <script type="text/javascript" src="../static/js/vbootstrap-datetimepicker.min.js" charset="UTF-8"></script>
+        <script type="text/javascript" src="../static/js/bootstrap-datetimepicker.zh-CN.js" charset="UTF-8"></script>
+
+        <script src="../static/js/echarts.min.js"></script>
+        <script type="text/javascript" src="../static/js/charts/RSI.js"></script>
+        <script type="text/javascript" src="../static/js/charts/ATR.js"></script>
+        <script type="text/javascript" src="../static/js/charts/VR.js"></script>
+        <script type="text/javascript" src="../static/js/charts/BIAS.js"></script>
+        <script type="text/javascript" src="../static/js/charts/MACD.js"></script>
+        <!--<script type="text/javascript" src="../static/js/charts/Flu.js"></script>-->
+        <!--<script type="text/javascript" src="../static/js/charts/Volume.js"></script>-->
+        <script type="text/javascript" src="../static/js/charts/Market.js"></script>
+
+
+        <script type="text/javascript">
+            $('.form_date').datetimepicker({
+                language: 'zh-CN',
+                weekStart: 1,
+                todayBtn: 1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                minView: 2,
+                forceParse: 0
+            });
+        </script>
+
+        <script type="text/javascript">
+
+
+            if(location.href.indexOf("hs300") < 0) {
+                window.location.href = "../pages/benchmark.html?hs300";
+            }
+
+            window.onload = createMarketTable();
+            var predictvr = new XMLHttpRequest();
+            predictvr.open("get", "/VRTip", false);
+            predictvr.send(null);
+            if(predictvr.readyState==4&&predictvr.status==200){
+                var vr=eval("("+predictvr.responseText+")");
+                var vrTip;
+                if(vr<=70){
+                    vrTip="VR指标表明股票处于低价区域，推荐买入";
+                }else if(160<=vr&&vr<=450){
+                    vrTip="VR指标表明股票处于获利区域，应考虑获利情况，行情走高";
+                }else if(vr>450){
+                    vrTip="VR指标表明股票处于警戒区域，股市行情达到或逼近顶峰，推荐卖出";
+                }else{
+                    vrTip="VR指标表明股票目前应持续观望";
+                }
+                document.getElementById("tip1").innerHTML=vrTip;
+            }
+
+            var predictrsi = new XMLHttpRequest();
+            predictrsi.open("get", "/RSITips", false);
+            predictrsi.send(null);
+            if(predictrsi.readyState==4&&predictrsi.status==200){
+                var rsi=eval("("+predictrsi.responseText+")");
+                var rsiTip;
+                if(rsi>=80){
+                    rsiTip="RSI指标极强，整个股市行情达到或逼近顶峰，推荐卖出";
+                }else if(50<=rsi&&rsi<=80){
+                    rsiTip="RSI指标较强，建议买入，股市行情走高";
+                }else if(20<=rsi&&rsi<50){
+                    rsiTip="RSI指标较弱，建议观望，股市行情走低";
+                }else{
+                    rsiTip="RSI指标极弱，建议买入，整个股市行情达到或逼近低谷";
+                }
+                document.getElementById("tip2").innerHTML=rsiTip;
+            }
+
+//            $(document).ready = createMarketTable();
+
+            $('.form_date').datetimepicker({
+                language: 'zh-CN',
+                weekStart: 1,
+                todayBtn: 1,
+                autoclose: 1,
+                todayHighlight: 1,
+                startView: 2,
+                minView: 2,
+                forceParse: 0
+            });
+        </script>
+
+<script type="text/javascript">
+    function timeFileBench(start, end){
+        var now = location.search.substring(0,9);
+        window.location.href = now+"&from="+start+"&to="+end;
+    }
+</script>
+
+
+
+</body>
+</html>

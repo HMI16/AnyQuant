@@ -1,0 +1,12 @@
+.textField {
+    -fx-pref-width: 80;
+}
+
+.label {
+    -fx-font-size: 11px;
+    -fx-pref-width: 80px;
+}
+
+.button {
+    -fx-pref-width: 80px;
+}
