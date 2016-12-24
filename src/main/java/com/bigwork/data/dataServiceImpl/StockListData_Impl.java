@@ -4,6 +4,7 @@ package com.bigwork.data.dataServiceImpl;
 import com.bigwork.controller.TestConnect;
 import com.bigwork.data.api.dataGetter.DataGetter;
 import com.bigwork.data.api.dataManagement.StockListData_management;
+import com.bigwork.data.dataHelper.FileHelper;
 import com.bigwork.data_service.StockListData_service;
 import com.bigwork.model.Stock;
 import com.bigwork.sql.MysqlLink;
@@ -17,7 +18,7 @@ public class StockListData_Impl implements StockListData_service {
     private StockListData_management stockListDataImpl = new StockListData_management();
 
 
-    public ArrayList<Stock> StockList(){
+   /* public ArrayList<Stock> StockList(){
         // TODO Auto-generated method stub
         ArrayList<Stock> result = new ArrayList<Stock>();
         boolean dbFine = true;
@@ -45,6 +46,22 @@ public class StockListData_Impl implements StockListData_service {
         if(!dbFine){
             System.out.println("not fine");
             result = this.SetTimeFromAPI();
+        }
+        return result;
+    }*/
+
+    public ArrayList<Stock> StockList() {
+        // TODO Auto-generated method stub
+        ArrayList<String> re = new ArrayList<String>();
+        ArrayList<Stock> result = new ArrayList<Stock>();
+
+        System.out.println(System.getProperty("user.dir"));
+
+        FileHelper helper = new FileHelper("file" + "/" + "StockList.txt");
+        re = helper.read();
+
+        for (String string : re) {
+            result.add(new Stock(string));
         }
         return result;
     }

@@ -4,6 +4,7 @@ package com.bigwork.data.dataServiceImpl;
 import com.bigwork.controller.TestConnect;
 import com.bigwork.data.api.dataGetter.DataGetter;
 import com.bigwork.data.api.dataManagement.SingleStockData_management;
+import com.bigwork.data.dataHelper.FileHelper;
 import com.bigwork.data.dataHelper.SingleStockFileFinder;
 import com.bigwork.data_service.SingleStockData_service;
 import com.bigwork.model.Stock;
@@ -25,7 +26,7 @@ public class SingleStockData_Impl implements SingleStockData_service {
     private SingleStockData_management singleDataImpl = new SingleStockData_management();
     private TypeGetter typeGetter = new TypeGetter();
 
-    public ArrayList<Stock> SingleStock(String id,String datefrom, String dateTo) {
+    /*public ArrayList<Stock> SingleStock(String id,String datefrom, String dateTo) {
         // TODO Auto-generated method stub
         ArrayList<Stock> result = new ArrayList<Stock>();
         boolean dbFine = true;
@@ -53,6 +54,25 @@ public class SingleStockData_Impl implements SingleStockData_service {
         if(!dbFine){
             result = this.SetTimeFromAPI(id, datefrom, dateTo);
         }
+        return result;
+    }*/
+
+    public ArrayList<Stock> SingleStock(String id,String datefrom, String dateTo) {
+        // TODO Auto-generated method stub
+        System.out.println("-------");
+        ArrayList<Stock> result = new ArrayList<Stock>();
+        ArrayList<String> re = new ArrayList<String>();
+        System.out.println(finder.getFilePath(id));
+        System.out.println("-------");
+        FileHelper helper = new FileHelper(finder.getFilePath(id));
+        re = helper.read();
+
+        for(int i = re.size()-31; i < re.size();i++){
+            result.add(new Stock(re.get(i)));
+        }
+        /*for (String string : re) {
+            result.add(new Stock(string));
+        }*/
         return result;
     }
 

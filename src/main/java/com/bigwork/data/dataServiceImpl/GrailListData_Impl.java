@@ -3,6 +3,7 @@ package com.bigwork.data.dataServiceImpl;
 import com.bigwork.controller.TestConnect;
 import com.bigwork.data.api.dataGetter.DataGetter;
 import com.bigwork.data.api.dataManagement.GrailListData_management;
+import com.bigwork.data.dataHelper.FileHelper;
 import com.bigwork.data_service.GrailListData_service;
 import com.bigwork.model.Grail;
 import com.bigwork.sql.MysqlLink;
@@ -17,7 +18,7 @@ public class GrailListData_Impl implements GrailListData_service {
     private GrailListData_management grailListDataImpl = new GrailListData_management();
 
     @Override
-    public ArrayList<Grail> GrailList(String market_id,String datefrom, String dateTo){
+    /*public ArrayList<Grail> GrailList(String market_id,String datefrom, String dateTo){
         // TODO Auto-generated method stub
         boolean dbFine = true;
         ArrayList<Grail> result = new ArrayList<Grail>();
@@ -44,6 +45,24 @@ public class GrailListData_Impl implements GrailListData_service {
         if(!dbFine){
             result = this.SetTimeFromAPI(datefrom, dateTo);
         }
+        return result;
+    }*/
+
+    public ArrayList<Grail> GrailList(String market_id,String datefrom, String dateTo) {
+        // TODO Auto-generated method stub
+        ArrayList<Grail> result = new ArrayList<Grail>();
+        ArrayList<String> re = new ArrayList<String>();
+
+        FileHelper helper = new FileHelper("file" + "/" + "GrailList.txt");
+        re = helper.read();
+
+        for(int i = re.size()-31; i < re.size();i++){
+            result.add(new Grail(re.get(i)));
+        }
+
+        /*for (String string : re) {
+            result.add(new Grail(string));
+        }*/
         return result;
     }
 
