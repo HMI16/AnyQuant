@@ -34,7 +34,12 @@ public class IndexController {
     @RequestMapping(value = "/PartIndex", method = RequestMethod.GET)
     @ResponseBody
     public ArrayList<Index> getIndex(){
-        Index_service index = new IndexImpl();
-        return index.getIndecies();
+        ArrayList<Index> indexArrayList = new ArrayList<>();
+        for(int i = 1;i < 99; i++){
+            indexArrayList.add(new Index("111",i,i));
+        }
+//        Index_service index = new IndexImpl();
+//        return index.getIndecies();
+        return indexArrayList;
     }
 }
