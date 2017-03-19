@@ -8,7 +8,6 @@ import com.bigwork.model.Stock;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
-import java.text.ParseException;
 import java.util.ArrayList;
 
 public class StockListData_management {

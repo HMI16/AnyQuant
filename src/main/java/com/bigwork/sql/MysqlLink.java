@@ -1,7 +1,6 @@
 package com.bigwork.sql;
 
 
-import com.bigwork.model.Industry;
 import com.bigwork.sql.impl.*;
 import com.bigwork.sql.implservice.*;
 import com.mysql.jdbc.exceptions.jdbc4.CommunicationsException;
